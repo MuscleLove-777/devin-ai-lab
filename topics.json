@@ -1,0 +1,133 @@
+{
+  "categories": {
+    "Devin 使い方": [
+      {
+        "title": "Devin AIとは？始め方ガイド2026",
+        "keyword": "Devin AI 始め方",
+        "description": "Devinのアカウント作成からタスク依頼まで、初心者向け完全ガイド",
+        "priority": "high"
+      },
+      {
+        "title": "Devinにタスクを依頼する方法【実践ガイド】",
+        "keyword": "Devin タスク 依頼方法",
+        "description": "Slackやブラウザからの効果的なタスク依頼テンプレート",
+        "priority": "high"
+      },
+      {
+        "title": "Devinのプロンプト術：最適な指示の出し方",
+        "keyword": "Devin プロンプト 使い方",
+        "description": "Devinに正確に意図を伝えるためのプロンプトテクニック",
+        "priority": "medium"
+      }
+    ],
+    "Devin 料金・プラン": [
+      {
+        "title": "Devin料金 $500→$20の衝撃値下げ【2026年最新】",
+        "keyword": "Devin 料金 値下げ",
+        "description": "Devinの料金プラン改定の詳細とACU消費量の実測データ",
+        "priority": "high"
+      },
+      {
+        "title": "Devinは無料で試せる？お試し方法を解説",
+        "keyword": "Devin 無料 お試し",
+        "description": "Devinの無料トライアルやCoreプランの始め方",
+        "priority": "high"
+      }
+    ],
+    "Devin vs 人間エンジニア": [
+      {
+        "title": "Devinはエンジニアの仕事を奪うのか？現実を解説",
+        "keyword": "Devin エンジニア 仕事 奪う",
+        "description": "Devinの能力と限界を客観分析。人間との棲み分けを考える",
+        "priority": "high"
+      },
+      {
+        "title": "Devinに任せていい仕事・ダメな仕事リスト",
+        "keyword": "Devin 任せていい タスク",
+        "description": "実際にDevinを使って分かった得意・不得意タスク一覧",
+        "priority": "medium"
+      }
+    ],
+    "Devin 最新ニュース": [
+      {
+        "title": "DevinがDevinを管理する自律オーケストレーション機能",
+        "keyword": "Devin 自律 オーケストレーション",
+        "description": "Devinが複数のDevinインスタンスを統括する新機能の解説",
+        "priority": "high"
+      },
+      {
+        "title": "Devin Triggers：スケジュール自動実行で開発が変わる",
+        "keyword": "Devin Triggers スケジュール実行",
+        "description": "定期的なタスクをDevinに自動実行させるTriggers機能",
+        "priority": "high"
+      },
+      {
+        "title": "Cognition AI 最新動向まとめ【2026年版】",
+        "keyword": "Cognition AI 最新 2026",
+        "description": "Devinを開発するCognition AIの資金調達・評価額・新機能",
+        "priority": "medium"
+      }
+    ],
+    "AIエージェント開発": [
+      {
+        "title": "2026年AIエージェント最前線：自律型AIの進化",
+        "keyword": "AIエージェント 2026 最前線",
+        "description": "Devinを含むAIエージェント技術の最新トレンド総まとめ",
+        "priority": "high"
+      },
+      {
+        "title": "AIエージェントとは？仕組みと種類をわかりやすく解説",
+        "keyword": "AIエージェント とは 仕組み",
+        "description": "AIエージェントの基本概念からDevinのような自律型AIまで解説",
+        "priority": "high"
+      }
+    ],
+    "Devin 活用事例": [
+      {
+        "title": "Devinでコードレビュー自動化：実践レポート",
+        "keyword": "Devin コードレビュー 自動化",
+        "description": "Devinを使ったコードレビューの自動化手順と品質評価",
+        "priority": "high"
+      },
+      {
+        "title": "Devinでテストコード自動生成：カバレッジ向上術",
+        "keyword": "Devin テスト 自動生成",
+        "description": "DevinにユニットテストやE2Eテストを書かせる実践例",
+        "priority": "medium"
+      }
+    ],
+    "Devin API・統合": [
+      {
+        "title": "Devin Slack統合ガイド：チームで使いこなす方法",
+        "keyword": "Devin Slack 統合 設定",
+        "description": "DevinをSlackに統合してチーム全員で活用する設定手順",
+        "priority": "high"
+      },
+      {
+        "title": "Devin API活用術：自動化ワークフロー構築",
+        "keyword": "Devin API 自動化",
+        "description": "Devin APIを使ったCI/CDパイプラインとの統合方法",
+        "priority": "medium"
+      }
+    ],
+    "AIエージェント比較": [
+      {
+        "title": "Devin vs Cursor Agent vs Claude Code 徹底比較",
+        "keyword": "Devin Cursor Claude Code 比較",
+        "description": "3大AIコーディングツールを料金・機能・使いやすさで比較",
+        "priority": "high"
+      },
+      {
+        "title": "Devin vs GitHub Copilot Agent：どちらを選ぶべき？",
+        "keyword": "Devin GitHub Copilot Agent 比較",
+        "description": "自律型エージェント vs コード補完AIの選び方ガイド",
+        "priority": "high"
+      }
+    ]
+  },
+  "metadata": {
+    "last_updated": "2026-03-29",
+    "total_topics": 18,
+    "version": "1.0"
+  }
+}
