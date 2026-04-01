@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Devin AIエージェント研究所</title>
+    <link>https://musclelove-777.github.io/devin-ai-lab</link>
+    <description>AIソフトウェアエンジニアDevinの使い方・最新情報・料金・活用術を毎日更新。自律型AIエージェント開発の最前線を初心者にもわかりやすく解説。</description>
+    <language>ja</language>
+    <lastBuildDate>Wed, 01 Apr 2026 23:14:31 +0900</lastBuildDate>
+    <atom:link href="https://musclelove-777.github.io/devin-ai-lab/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Devin Coreプラン徹底解説！価格とACU</title>
+      <link>https://musclelove-777.github.io/devin-ai-lab/articles/devin-core-plan-kakaku-acu.html</link>
+      <guid>https://musclelove-777.github.io/devin-ai-lab/articles/devin-core-plan-kakaku-acu.html</guid>
+      <description></description>
+      <category>Devin 料金・プラン</category>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0900</pubDate>
+    </item>
+    <item>
+      <title>Devin Coreプラン解説：AIエンジニアの驚異的進化</title>
+      <link>https://musclelove-777.github.io/devin-ai-lab/articles/devin-core-plan-kaisetsu.html</link>
+      <guid>https://musclelove-777.github.io/devin-ai-lab/articles/devin-core-plan-kaisetsu.html</guid>
+      <description></description>
+      <category>Devin 料金・プラン</category>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0900</pubDate>
+    </item>
+  </channel>
+</rss>
