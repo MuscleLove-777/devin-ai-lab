@@ -1,0 +1,40 @@
+{
+  "title": "Devin AI で実装タスクを丸投げする際のプロンプト設計2026",
+  "content": "# Devin AI で実装タスクを丸投げする際のプロンプト設計2026\n\n## この記事でわかること\n- 自律型エージェント Devin に渡すタスク仕様の書き方\n- Devin が暴走しない範囲設定（受け入れ条件・スコープ・禁止事項）\n- 複数タスク並列時のレビュー運用フロー\n\n## 結論\nDevin は中級者が「自分の代わりに半日座って書いてくれる別人格のエンジニア」と捉えるのが実態に近いです。プロンプトは Issue テンプレートに近い構造で、受け入れ条件と禁止事項を必ず含めるのがコツ。これがあるかないかで成功率が体感で2倍は変わります。\n\n## 本題\n### Devin プロンプトの黄金フォーマット\n中級者向けに、毎回最低限埋めるべき項目は次の6つです。\n\n1. **タイトル（1行）**: 「Stripe Webhook で plan_id を users テーブルに反映」\n2. **背景**: なぜ必要か、関連する既存コード\n3. **完成イメージ**: 動いた状態を箇条書きで\n4. **受け入れ条件**: テストで通ればOK、という客観基準\n5. **スコープ外**: 触ってほしくないファイル / リファクタ\n6. **禁止事項**: 「依存ライブラリの追加」「マイグレーションの自動実行」など\n\nこれを Issue として GitHub に書き、Devin にそのリンクを渡すのが2026年時点で最も安定する流れです。\n\n### 受け入れ条件は「テスト通過」で書く\nDevin に丸投げする上で最重要なのは、合格ラインを Devin が機械的に判定できるようにすることです。\n\n良い例:\n- `npm test -- subscription.spec.ts` がすべてパスする\n- 既存のテストもすべてパスする（リグレッションなし）\n- 該当エンドポイントを `curl` で叩いた結果、200 と JSON `{ status: \"ok\" }` が返る\n\n悪い例:\n- 「ちゃんと動いていればOK」\n- 「いい感じにエラー処理してください」\n\n機械判定可能な条件を 3〜5 個並べると、Devin が自分でテスト → 修正 → 再テストの自律ループを回せます。\n\n### スコープ外の明示で暴走を防ぐ\nDevin は親切心でリファクタや関係ないファイルにも手を入れがちです。次のような禁止リストを必ず付与します。\n\n- `app/admin/` 以下は一切変更しない\n- パッケージ追加禁止（既存依存のみで実装）\n- マイグレーションファイルを直接編集しない（新規追加のみ）\n- `.env.example` 以外の環境変数ファイルに触らない\n\nこれだけで PR の差分が読みやすくなり、レビュー時間が3割は短縮されます。\n\n### 並列タスク運用のコツ\nDevin は同時に複数タスクを走らせられますが、中級者ほど「最大3並列まで」に絞るのが推奨です。\n\n理由は3つ。\n1. 同じファイルを複数タスクで触ると、merge コンフリクトの解決が結局自分の仕事になる\n2. レビューが追いつかず、合格ラインの検証ができないまま PR が積み上がる\n3. Devin の時間枠（ACU）を浪費する\n\n3並列で運用する場合は、ファイルが衝突しない単位（フロント / バック / インフラ）で切るのが鉄板です。\n\n### レビュー時に必ず確認する3つ\nDevin の PR は「動いてはいるが微妙」というケースが頻発します。レビュー時の最低限のチェック観点。\n\n1. **依存追加の有無**: package.json / requirements.txt に新規追加がないか\n2. **テストの内容**: テストが存在するだけでなく、本当に意味のあるアサーションか\n3. **マジックナンバー / ハードコード**: 環境変数や定数に切り出されているか\n\nここを通せば、Devin の PR を高速にマージできます。\n\n## よくある質問（FAQ）\n### Q1: Devin にどこまで任せるのが安全ですか？\nA1: 「既存テストが整っているリポジトリの、機能追加 or バグ修正」までが安全圏です。テストがない領域や、設計を1から考える必要があるタスクは人間が骨格を決めてから渡すのが鉄則です。\n\n### Q2: 月額料金は中級フリーランスでも回収できますか？\nA2: 1ヶ月あたり数件の中規模タスクをまるっと任せられるなら回収可能ラインです。1日30分しか使わない人にはコスパが合いません。\n\n### Q3: Cursor や Copilot との使い分けは？\nA3: Cursor / Copilot は手元で書きながら補助、Devin は自分が席を外している間に進めてもらう用途、と棲み分けるのが2026年時点の主流です。\n\n## まとめ\nDevin の威力は、丸投げの精度＝プロンプト設計の精度に直結します。Issue テンプレ的な6項目と、機械判定可能な受け入れ条件、スコープ外の明示があれば、半日分のタスクをコーヒー1杯分の時間でレビューまで持っていけます。最初は1並列で運用感を掴み、慣れたら3並列まで広げていきましょう。\n",
+  "meta_description": "Devin に実装タスクを丸投げするためのプロンプト設計を中級者向けに解説。Issue テンプレ的な6項目と機械判定可能な受け入れ条件で、レビュー時間を最小化する運用法を紹介。",
+  "tags": [
+    "Devin",
+    "プロンプト",
+    "AIエージェント",
+    "タスク委譲",
+    "受け入れ条件"
+  ],
+  "slug": "devin-prompt-design-for-task-delegation-2026",
+  "faq": [
+    {
+      "question": "Q1: Devin にどこまで任せるのが安全ですか？",
+      "answer": "「既存テストが整っているリポジトリの、機能追加 or バグ修正」までが安全圏です。テストがない領域や、設計を1から考える必要があるタスクは人間が骨格を決めてから渡すのが鉄則です。"
+    },
+    {
+      "question": "Q2: 月額料金は中級フリーランスでも回収できますか？",
+      "answer": "1ヶ月あたり数件の中規模タスクをまるっと任せられるなら回収可能ラインです。1日30分しか使わない人にはコスパが合いません。"
+    },
+    {
+      "question": "Q3: Cursor や Copilot との使い分けは？",
+      "answer": "Cursor / Copilot は手元で書きながら補助、Devin は自分が席を外している間に進めてもらう用途、と棲み分けるのが2026年時点の主流です。"
+    }
+  ],
+  "hero_emoji": "📝",
+  "hero_gradient": "135deg",
+  "keyword": "Devin",
+  "category": "Devin プロンプト",
+  "generated_at": "2026-04-29T08:11:34.844711",
+  "seo_score": 85,
+  "jsonld": [
+    "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BlogPosting\",\n  \"headline\": \"Devin AI で実装タスクを丸投げする際のプロンプト設計2026\",\n  \"description\": \"Devin に実装タスクを丸投げするためのプロンプト設計を中級者向けに解説。Issue テンプレ的な6項目と機械判定可能な受け入れ条件で、レビュー時間を最小化する運用法を紹介。\",\n  \"url\": \"https://musclelove-777.github.io/devin-ai-lab/articles/devin-prompt-design-for-task-delegation-2026.html\",\n  \"datePublished\": \"2026-04-29T08:11:34.844711\",\n  \"dateModified\": \"2026-04-29T08:11:34.844711\",\n  \"author\": {\n    \"@type\": \"Organization\",\n    \"name\": \"wave35d-ai-articles\"\n  },\n  \"keywords\": \"Devin, プロンプト, AIエージェント, タスク委譲, 受け入れ条件\",\n  \"articleSection\": \"Devin プロンプト\",\n  \"inLanguage\": \"ja\"\n}\n</script>",
+    "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"FAQPage\",\n  \"mainEntity\": [\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Q1: Devin にどこまで任せるのが安全ですか？\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"「既存テストが整っているリポジトリの、機能追加 or バグ修正」までが安全圏です。テストがない領域や、設計を1から考える必要があるタスクは人間が骨格を決めてから渡すのが鉄則です。\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Q2: 月額料金は中級フリーランスでも回収できますか？\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"1ヶ月あたり数件の中規模タスクをまるっと任せられるなら回収可能ラインです。1日30分しか使わない人にはコスパが合いません。\"\n      }\n    },\n    {\n      \"@type\": \"Question\",\n      \"name\": \"Q3: Cursor や Copilot との使い分けは？\",\n      \"acceptedAnswer\": {\n        \"@type\": \"Answer\",\n        \"text\": \"Cursor / Copilot は手元で書きながら補助、Devin は自分が席を外している間に進めてもらう用途、と棲み分けるのが2026年時点の主流です。\"\n      }\n    }\n  ]\n}\n</script>",
+    "<script type=\"application/ld+json\">\n{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BreadcrumbList\",\n  \"itemListElement\": [\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 1,\n      \"name\": \"ホーム\",\n      \"item\": \"https://musclelove-777.github.io/devin-ai-lab\"\n    },\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 2,\n      \"name\": \"Devin プロンプト\",\n      \"item\": \"https://musclelove-777.github.io/devin-ai-lab/category/Devin プロンプト\"\n    },\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 3,\n      \"name\": \"Devin AI で実装タスクを丸投げする際のプロンプト設計2026\"\n    }\n  ]\n}\n</script>"
+  ],
+  "has_affiliate": false,
+  "affiliate_count": 0
+}
