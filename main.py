@@ -12,6 +12,7 @@ blog_engineのmain.pyに処理を委譲する。
 """
 import sys
 import os
+from llm import get_llm_client
 
 # blog_engineへのパスを追加
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
